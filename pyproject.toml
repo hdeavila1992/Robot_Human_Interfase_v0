@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "Robot_Human_Interfase_m0"
+version = "0.0.1"
+description = "This project focuses on classifying Electromyography (EMG) signals acquired using an OpenBCI device at the LAM laboratory at Sim\u00f3n Bol\u00edvar University. The data was collected in a single continuous session, with each phase recorded for a specific duration: a 2-minute baseline state, followed by 1-minute intervals for forward neck movement, backward neck movement, right neck movement, left neck movement, and a state of resting thought. The goal is to develop an AI model capable of classifying these distinct states, enabling it to recognize a person's intended movement when the experiment is replicated"
+authors = [
+  { name = "Hernando Jose De Avila Pereira" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = "==Python 3.13.2"
+
+
+[tool.ruff]
+line-length = 99
+src = ["Robot_Human_Interfase_m0"]
+include = ["pyproject.toml", "Robot_Human_Interfase_m0/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["Robot_Human_Interfase_m0"]
+force-sort-within-sections = true
+
