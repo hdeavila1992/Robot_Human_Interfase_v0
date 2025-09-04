@@ -6,6 +6,21 @@
 
 This project focuses on classifying Electromyography (EMG) signals acquired using an OpenBCI device at the LAM laboratory at Simón Bolívar University. The data was collected in a single continuous session, with each phase recorded for a specific duration: a 2-minute baseline state, followed by 1-minute intervals for forward neck movement, backward neck movement, right neck movement, left neck movement, and a state of resting thought. The goal is to develop an AI model capable of classifying these distinct states, enabling it to recognize a person's intended movement when the experiment is replicated
 
+### How to Interpret the Data
+Time is crucial here; what matters is how the experiment evolves.
+
+- Basal state: 2 minutes (120 seconds) [0:120]
+- Right state: 1 minute (60 seconds) [120:180]
+- Center state: 1 minute (60 seconds) [180:240]
+- Left state: 1 minute (60 seconds) [240:300]
+- Center state: 1 minute (60 seconds) [300:360]
+- Forward state: 1 minute (60 seconds) [360:420]
+- Center state: 1 minute (60 seconds) [420:480]
+- Backwards state: 1 minute (60 seconds) [480:540]
+- Rest state: 2 minutes (120 seconds) [540:660]
+
+so is importan to split data frame in correct fase. 
+
 ## Project Organization
 
 ```
@@ -59,3 +74,20 @@ This project focuses on classifying Electromyography (EMG) signals acquired usin
 
 --------
 
+## Algunos MWT:
+
+Familia de Wavelet (Ejemplo)	Propiedades Clave	Ventajas	Desventajas	Aplicación EEG/BCI Típica
+Daubechies (db4)	Ortogonal, Asimétrica, Soporte compacto	Eficiencia computacional, buena para detectar discontinuidades	La asimetría puede introducir distorsión de fase	
+Descomposición DWT para extracción de características (energía, entropía) en MI y P300    
+
+Symlets (sym9)	Ortogonal, Casi simétrica, Soporte compacto	Baja distorsión de fase, propiedades similares a Daubechies	Ligeramente mayor coste computacional que dbN	
+Análisis DWT donde la preservación de la forma de la onda es importante    
+
+Morlet	No ortogonal, Compleja, Soporte infinito	Excelente localización tiempo-frecuencia, forma similar a ritmos neuronales	Reconstrucción no perfecta, mayor coste computacional	
+Análisis CWT para generar escalogramas como entrada para redes neuronales convolucionales (CNNs)    
+
+Biorthogonal (bior2.4)	Biorthogonal, Simétrica, Fase lineal	Reconstrucción perfecta con filtros de fase lineal, flexibilidad en el diseño	No son estrictamente ortogonales	
+Procesamiento y reconstrucción de imágenes y señales donde la fase es crítica    
+
+Coiflets (coif1)	Ortogonal, Casi simétrica, Momentos de desvanecimiento para la función de escala	Buen equilibrio entre soporte compacto y momentos de desvanecimiento	Menos opciones de orden que Daubechies/Symlets	
+Aplicaciones de descomposición DWT que requieren un buen compromiso de propiedades  1    
